@@ -1,22 +1,31 @@
 ﻿using System;
-using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using WindowsInput;
 using WindowsInput.Native;
 
-namespace WindowsInput.UnitTests
+namespace WindowsInputSamples
 {
-    [TestFixture]
-    public class InputSimulatorExamples
+    class Program
     {
-        [Test]
-        public void OpenWindowsExplorer()
+        static void Main(string[] args)
+        {
+            //OpenWindowsExplorer();
+            SayHello();
+            //AnotherTest();
+            //TestMouseMoveTo();
+        }
+
+        static void OpenWindowsExplorer()
         {
             var sim = new KeyboardSimulator();
             sim.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_E);
         }
 
-        [Test]
-        public void SayHello()
+
+        static void SayHello()
         {
             var sim = new KeyboardSimulator();
             sim.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_R);
@@ -39,8 +48,8 @@ namespace WindowsInput.UnitTests
             sim.KeyPress(VirtualKeyCode.VK_N);
         }
 
-        [Test]
-        public void AnotherTest()
+
+        static void AnotherTest()
         {
             var sim = new InputSimulator();
             sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
@@ -55,20 +64,20 @@ namespace WindowsInput.UnitTests
 
             // Paint
             sim.Mouse.LeftButtonDown();
-            sim.Mouse.MoveMouseToPositionOnVirtualDesktop(65535/2, 65535/2);
+            sim.Mouse.MoveMouseToPositionOnVirtualDesktop(65535 / 2, 65535 / 2);
             sim.Mouse.LeftButtonUp();
 
         }
 
-        [Test]
-        public void TestMouseMoveTo()
+
+        static void TestMouseMoveTo()
         {
             var sim = new InputSimulator();
-            sim.Mouse.MoveMouseTo(0,0);
+            sim.Mouse.MoveMouseTo(0, 0);
             Thread.Sleep(1000);
             sim.Mouse.MoveMouseTo(65535, 65535);
             Thread.Sleep(1000);
-            sim.Mouse.MoveMouseTo(65535/2, 65535/2);
+            sim.Mouse.MoveMouseTo(65535 / 2, 65535 / 2);
         }
     }
 }

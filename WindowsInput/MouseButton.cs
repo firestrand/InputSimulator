@@ -2,14 +2,28 @@
 
 namespace WindowsInput
 {
-    internal enum MouseButton
+    /// <summary>
+    /// Mouse Button Enum
+    /// </summary>
+    public enum MouseButton
     {
+        /// <summary>
+        /// Left Button
+        /// </summary>
         LeftButton,
+        /// <summary>
+        /// Middle Button
+        /// </summary>
         MiddleButton,
+        /// <summary>
+        /// Right Button
+        /// </summary>
         RightButton,
     }
-
-    internal static class MouseButtonExtensions
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class MouseButtonExtensions
     {
         internal static MouseFlag ToMouseButtonDownFlag(this MouseButton button)
         {
@@ -28,8 +42,12 @@ namespace WindowsInput
                     return MouseFlag.LeftDown;
             }
         }
-
-        internal static MouseFlag ToMouseButtonUpFlag(this MouseButton button)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="button"></param>
+        /// <returns></returns>
+        public static MouseFlag ToMouseButtonUpFlag(this MouseButton button)
         {
             switch (button)
             {

@@ -112,9 +112,14 @@ namespace WindowsInput
         public void ModifiedKeyStroke(IEnumerable<VirtualKeyCode> modifierKeyCodes, VirtualKeyCode keyCode)
         {
             var builder = new InputBuilder();
-            if (modifierKeyCodes != null) modifierKeyCodes.ToList().ForEach(x => builder.AddKeyDown(x));
+            var modifierKeyCodesList = modifierKeyCodes.ToList();
+            if (modifierKeyCodes != null) modifierKeyCodesList.ForEach(x => builder.AddKeyDown(x));
             builder.AddKeyPress(keyCode);
-            if (modifierKeyCodes != null) modifierKeyCodes.Reverse().ToList().ForEach(x => builder.AddKeyUp(x));
+            if (modifierKeyCodes != null)
+            {
+                modifierKeyCodesList.Reverse();
+                modifierKeyCodesList.ForEach(x => builder.AddKeyUp(x));
+            }
 
             SendSimulatedInput(builder.ToArray());
         }
@@ -144,9 +149,14 @@ namespace WindowsInput
         public void ModifiedKeyStroke(IEnumerable<VirtualKeyCode> modifierKeyCodes, IEnumerable<VirtualKeyCode> keyCodes)
         {
             var builder = new InputBuilder();
-            if (modifierKeyCodes != null) modifierKeyCodes.ToList().ForEach(x => builder.AddKeyUp(x));
+            var modifierKeyCodesList = modifierKeyCodes.ToList();
+            if (modifierKeyCodes != null) modifierKeyCodesList.ToList().ForEach(x => builder.AddKeyUp(x));
             if (keyCodes != null) keyCodes.ToList().ForEach(x => builder.AddKeyPress(x));
-            if (modifierKeyCodes != null) modifierKeyCodes.Reverse().ToList().ForEach(x => builder.AddKeyUp(x));
+            if (modifierKeyCodes != null)
+            {
+                modifierKeyCodesList.Reverse();
+                modifierKeyCodesList.ForEach(x => builder.AddKeyUp(x));
+            }
 
             SendSimulatedInput(builder.ToArray());
         }

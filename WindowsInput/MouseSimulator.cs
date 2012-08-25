@@ -24,7 +24,7 @@ namespace WindowsInput
         {
             if (messageDispatcher == null)
                 throw new InvalidOperationException(
-                    string.Format("The {0} cannot operate with a null {1}. Please provide a valid {1} instance to use for dispatching {2} messages.",
+                    String.Format("The {0} cannot operate with a null {1}. Please provide a valid {1} instance to use for dispatching {2} messages.",
                     typeof(MouseSimulator).Name, typeof(IInputMessageDispatcher).Name, typeof(INPUT).Name));
             
             _messageDispatcher = messageDispatcher;

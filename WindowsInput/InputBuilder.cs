@@ -8,7 +8,7 @@ namespace WindowsInput
     /// <summary>
     /// A helper class for building a list of <see cref="INPUT"/> messages ready to be sent to the native Windows API.
     /// </summary>
-    internal class InputBuilder : IEnumerable<INPUT>
+    public class InputBuilder : IEnumerable<INPUT>
     {
         /// <summary>
         /// The internal list of <see cref="INPUT"/> messages being built by this instance.
@@ -186,7 +186,12 @@ namespace WindowsInput
         }
 
         #region Mouse
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public InputBuilder AddRelativeMouseMovement(int x, int y)
         {
             var movement = new INPUT();
@@ -199,7 +204,12 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="absoluteX"></param>
+        /// <param name="absoluteY"></param>
+        /// <returns></returns>
         public InputBuilder AddAbsoluteMouseMovement(int absoluteX, int absoluteY)
         {
             var movement = new INPUT();
@@ -212,7 +222,12 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="absoluteX"></param>
+        /// <param name="absoluteY"></param>
+        /// <returns></returns>
         public InputBuilder AddAbsoluteMouseMovementOnVirtualDesktop(int absoluteX, int absoluteY)
         {
             var movement = new INPUT();
@@ -225,7 +240,11 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="button"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseButtonDown(MouseButton button)
         {
             var buttonDown = new INPUT();
@@ -236,7 +255,11 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xButtonId"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseXButtonDown(int xButtonId)
         {
             var buttonDown = new INPUT();
@@ -247,7 +270,11 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="button"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseButtonUp(MouseButton button)
         {
             var buttonUp = new INPUT();
@@ -257,7 +284,11 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xButtonId"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseXButtonUp(int xButtonId)
         {
             var buttonUp = new INPUT();
@@ -268,27 +299,47 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="button"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseButtonClick(MouseButton button)
         {
             return AddMouseButtonDown(button).AddMouseButtonUp(button);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xButtonId"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseXButtonClick(int xButtonId)
         {
             return AddMouseXButtonDown(xButtonId).AddMouseXButtonUp(xButtonId);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="button"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseButtonDoubleClick(MouseButton button)
         {
             return AddMouseButtonClick(button).AddMouseButtonClick(button);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xButtonId"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseXButtonDoubleClick(int xButtonId)
         {
             return AddMouseXButtonClick(xButtonId).AddMouseXButtonClick(xButtonId);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scrollAmount"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseVerticalWheelScroll(int scrollAmount)
         {
             var scroll = new INPUT();
@@ -300,7 +351,11 @@ namespace WindowsInput
 
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scrollAmount"></param>
+        /// <returns></returns>
         public InputBuilder AddMouseHorizontalWheelScroll(int scrollAmount)
         {
             var scroll = new INPUT();
